@@ -1,0 +1,71 @@
+<cd naar directory>
+
+python3 -m venv scraping
+
+source scraping/bin/activate
+
+pip install requests
+
+pip install beautifulsoup4
+
+code .
+
+
+import packages
+maak url
+maak response met requests.get(url)
+print de response --> html code 200 als het goed is.
+haal de text uit de response (response.text)
+print de text
+maak een soup-object: soup = BeautifulSoup(my_html, 'html.parser')
+print soup
+print soup.prettify
+bewaar soup text in bestand om structuur te kunnen laten zien
+Doe nu ook een 'inspect' van de pagina en laat de structuur zien
+buyers = soup.find("div"): laat zien welke (eerste) div je nu vindt. In deze div staan de verwijzingen naar de volgende pagina's.
+Laat de div.text zien (alleen 1, 2, 3, 4, 5)
+Laat de div ahref zien (alleen verwijzing naar pagina 2)
+Doe nu een find_all van de a-href in buyers.
+Print, via een for-loop, alle hrefs.
+Voeg de eerste pagina toe aan de list.
+Bewaar de pagina hrefs in een list (list comprehension), voor later
+Laat nu opnieuw de pagina-inspect zien 
+
+Zoek de div met title="buyer-info"
+Zoek de div met title="buyer-name"
+Laat de verschillen zien.
+
+Zoek div buyer_name in buyer_info
+Zoek span buyer_price in buyer_info
+print beide gegevens
+
+Dan een find_all zoals buyer_info. Print deze gegevens
+Dan hetzelfde, maar dan via een loop: for buyer in soup.find_all ...
+En zoek binnen de loop naar buyer_name, buyer_price. Print deze.
+
+Maak een lege lijst voor de loop (buyers)
+Vul de lijst buyers met buyers_name en buyers_price (list in list)
+Laat de buyers lijst zien.
+
+Maak een def van de for-loop over buyers. Param: bs-soup, return list
+
+maak een loop over de page_list (for url in page_list)
+	print(parsing... url)
+	response
+	response.text
+	soup element
+	concatenate all_buyers met def output
+
+import csv
+open buyers.csv writable binnen with context
+schrijf header row
+schrijf(all_buyers)
+
+
+
+
+
+
+
+
+
