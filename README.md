@@ -1,6 +1,7 @@
-# hackatrain2019
+# Hackatrain2019
 
 Example 01: http://econpy.pythonanywhere.com/ex/001.html
+
 Example 02: https://github.com/trending
 
 These are the files and other information needed to follow the workshop "Webscraping with Python" on Hackatrain 2019, Utrecht, The Netherlands.
