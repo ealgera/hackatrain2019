@@ -210,10 +210,20 @@ Plot de Stars als bar-graph
    
    import matplotlib.pyplot as plt
    
-   df.Stars.plot(kind="bar")
+   p = df.Stars.plot(kind="bar")
+   p.set(xlabel="Authors", ylabel="Stars")
    plt.show()
 
+Omdat de X-as de index waarde is is de grafiek niet goed.
+Laat structuur zien
+   print(df.head())
 
+Zet nu de correcte index.
+   df.set_index("Author", inplace=True)
+   print(df.head())
+
+Laat nu opnieuw de plot zien.
+   
 
 
 
