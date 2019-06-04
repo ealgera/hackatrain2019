@@ -34,8 +34,13 @@ print soup.prettify
   print(soup.prettify)
 
 bewaar soup text in bestand om structuur te kunnen laten zien
+  scrape-test.py > html-txt.txt
+  
 Doe nu ook een 'inspect' van de pagina en laat de structuur zien
-buyers = soup.find("div"): laat zien welke (eerste) div je nu vindt. In deze div staan de verwijzingen naar de volgende pagina's.
+
+Laat zien welke (eerste) div je nu vindt. In deze div staan de verwijzingen naar de volgende pagina's.
+buyers = soup.find("div")
+
 Laat de div.text zien (alleen 1, 2, 3, 4, 5)
 Laat de div ahref zien (alleen verwijzing naar pagina 2)
 Doe nu een find_all van de a-href in buyers.
