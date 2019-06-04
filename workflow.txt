@@ -124,7 +124,7 @@ Open website en laat met inspect de opbouw van de pagina zien.
 Laat zien dat de ordered_list (ol) 'repo-list' alle elementen omvat
 
 Doe een soup.find van ol met class 'repo-list' en laat deze zien
-  repo_list = soup.find("ol", {"class": "repo-list"})
+  repo_list = soup.find("ol", {"class": "repo-list"}) / soup.find("ol", "class_="repo-list")
   print(repo_list)
   
 Doe een find binnen repo-list op de list met classe "col-12 d-block width-full py-4 border-bottom"
@@ -132,14 +132,16 @@ Laat dit repo-element zien
   repo_element = repo_list.find("li", {"class": "col-12 d-block width-full py-4 border-bottom"})
   print(repo_element)
 
-Doe een find binnen repo-list op de list met classe "col-12 d-block width-full py-4 border-bottom"
-Laat dit repo-element zien
-
 Laat zien dat een find op de eerst "a" in repo-element een string met author en project laat zien (gescheiden door een '/')
+  repo_author = repo_element.find("a")
+  print(repo_author.text) / print(repo_author.get_text())
+
 Doe dan een split('/') op find "a" in repo-element om author en project te scheiden
+  repo_author, repo_name = repo_element.find("a").text.split(" / ")
 
 Doe nu een find_all op de "li" met class "col-12 d-block width-full py-4 border-bottom" om alle elemente te vinden
 print author en projectnaam
+
 
 Laat op de pagina met inspect zien waar het aantal sterren te vinden is. ("a", {"class": "muted-link d-inline-block mr-3"))
 print author, name en stars, allen met een strip()
