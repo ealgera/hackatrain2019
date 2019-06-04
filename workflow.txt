@@ -141,14 +141,35 @@ Doe dan een split('/') op find "a" in repo-element om author en project te schei
 
 Doe nu een find_all op de "li" met class "col-12 d-block width-full py-4 border-bottom" om alle elemente te vinden
 print author en projectnaam
+  for repo_element in repo_list.find_all("li", "col-12 d-block width-full py-4 border-bottom"):
+    print(repo_element)
+    print("-" * 25)
 
+Nu met author en name:
+    repo_author = repo_element.find("a").text
+
+Split en daarna strip laten zien
+    repo_author, repo_name = repo_element.find("a").text.split(" / ")
+    repo_author, repo_name = repo_element.find("a").text.strip().split(" / ")
 
 Laat op de pagina met inspect zien waar het aantal sterren te vinden is. ("a", {"class": "muted-link d-inline-block mr-3"))
 print author, name en stars, allen met een strip()
+    repo_stars = repo_element.find("a", {"class": "muted-link d-inline-block mr-3"}).text.strip()
+    print(repo_author, "-", repo_name, "-", repo_stars)
+    print("-" * 25   )
 
-
+Zoek de link in repo_element
+   repo_link = repo_element.find("a").get("href")
+En voeg GitHub toe:
+   repo_link = "https://github.com" + repo_element.find("a").get("href")
+      
 print nu alles
+
 Voeg alles toe aan een lege list (repo_trends) en print deze
+  repo_trends = []
+  for ...
+    ...
+    repo_trends.append([repo_author.strip(), repo_name.strip(), int(repo_stars.text.strip().replace(",","")), repo_link])
 
 Probeer de lijst te sorteren maar laat zien dat het een alfanumerieke sort is (op stars)
 Doe een replace van ',' naar <none> en cast naar int()
