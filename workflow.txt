@@ -162,25 +162,52 @@ Zoek de link in repo_element
    repo_link = repo_element.find("a").get("href")
 En voeg GitHub toe:
    repo_link = "https://github.com" + repo_element.find("a").get("href")
-      
-print nu alles
 
 Voeg alles toe aan een lege list (repo_trends) en print deze
   repo_trends = []
   for ...
     ...
-    repo_trends.append([repo_author.strip(), repo_name.strip(), int(repo_stars.text.strip().replace(",","")), repo_link])
+    repo_trends.append([repo_author, repo_name, repo_stars, repo_link])   
+print de lijst
 
 Probeer de lijst te sorteren maar laat zien dat het een alfanumerieke sort is (op stars)
+   repo_trends = sorted(repo_trends, key=lambda x: x[2], reverse=True)
+
+Zet repo_stars om naar numeriek om goed te kunnen sorteren (eerst zonder replace: foutmelding!)
 Doe een replace van ',' naar <none> en cast naar int()
 Laat de lijst opnieuw zien.
 Sorteer de lijst nu goed op de derde kolom (stars))
+    repo_trends.append([repo_author, repo_name, int(repo_stars.replace(",","")), repo_link])
 
 Laat zien dat je op de eerste find "a" in repo-element ook de href kunt pakken (get("href")): repo_link
 Voeg "https://github.com" toe aan repo_link
 Voeg repo_link toe aan de lijst repo_trends
 
 print ieder element van de repo_trends
+
+Schrijf de lijst weg naar een CSV bestand
+   with open("trending.csv","w") as csv_file:
+      wr = csv.writer(csv_file)
+      wr.writerows(repo_trends)
+
+Open de CSV in pandas
+   pip install pandas
+   
+   import pandas as pd
+   df = pd.read_csv("trending.csv", names=["Author", "Name", "Stars", "Link"])
+   print(type(df))
+
+Print de Stars kolom
+   print(df.Stars)
+   
+Plot de Stars als bar-graph
+   pip install matplotlib
+   
+   import matplotlib.pyplot as plt
+   
+   df.Stars.plot(kind="bar")
+   plt.show()
+
 
 
 
