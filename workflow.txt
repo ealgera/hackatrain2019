@@ -79,10 +79,58 @@ open buyers.csv writable binnen with context
 schrijf header row
 schrijf(all_buyers)
 
+
 Example 2
+
+<cd naar directory>
+
+python3 -m venv scraping
+
+source scraping/bin/activate
+
+pip install requests
+pip install beautifulsoup4
+
+code .
+
+import packages
+  from bs4 import BeautifulSoup 
+  import requests
+
+maak url
+  url = "https://github.com/trending"
+
+maak response met requests.get(url)
+print de response --> html code 200 als het goed is.
+  response = requests.get(url)
+  print(response)
+
+haal de text uit de response (response.text)
+print de text
+  my_html = response.text
+  
+maak een soup-object: soup = BeautifulSoup(my_html, 'html.parser')
+print soup
+print soup.prettify  
+  soup = BeautifulSoup(my_html, 'html.parser')
+  print(soup)
+  print(soup.prettify)
+
+bewaar soup text in bestand om structuur te kunnen laten zien
+  scrape-test.py > html-txt.txt
+
 Open website en laat met inspect de opbouw van de pagina zien.
+
 Laat zien dat de ordered_list (ol) 'repo-list' alle elementen omvat
+
 Doe een soup.find van ol met class 'repo-list' en laat deze zien
+  repo_list = soup.find("ol", {"class": "repo-list"})
+  print(repo_list)
+  
+Doe een find binnen repo-list op de list met classe "col-12 d-block width-full py-4 border-bottom"
+Laat dit repo-element zien
+  repo_element = repo_list.find("li", {"class": "col-12 d-block width-full py-4 border-bottom"})
+  print(repo_element)
 
 Doe een find binnen repo-list op de list met classe "col-12 d-block width-full py-4 border-bottom"
 Laat dit repo-element zien
