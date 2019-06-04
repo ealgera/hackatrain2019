@@ -10,16 +10,29 @@ pip install beautifulsoup4
 
 code .
 
-
 import packages
+  from bs4 import BeautifulSoup 
+  import requests
+
 maak url
+  url = "https://github.com/trending"
+
 maak response met requests.get(url)
 print de response --> html code 200 als het goed is.
+  response = requests.get(url)
+  print(response)
+
 haal de text uit de response (response.text)
 print de text
+  my_html = response.text
+  
 maak een soup-object: soup = BeautifulSoup(my_html, 'html.parser')
 print soup
-print soup.prettify
+print soup.prettify  
+  soup = BeautifulSoup(my_html, 'html.parser')
+  print(soup)
+  print(soup.prettify)
+
 bewaar soup text in bestand om structuur te kunnen laten zien
 Doe nu ook een 'inspect' van de pagina en laat de structuur zien
 buyers = soup.find("div"): laat zien welke (eerste) div je nu vindt. In deze div staan de verwijzingen naar de volgende pagina's.
