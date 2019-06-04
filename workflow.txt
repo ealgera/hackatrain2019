@@ -120,6 +120,11 @@ bewaar soup text in bestand om structuur te kunnen laten zien
   scrape-test.py > html-txt.txt
 
 Open website en laat met inspect de opbouw van de pagina zien.
+We gaan de volgende elementen 'scrapen':
+   - author (name)
+   - name (project)
+   - stars
+   - link tot project
 
 Laat zien dat de ordered_list (ol) 'repo-list' alle elementen omvat
 
