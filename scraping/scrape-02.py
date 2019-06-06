@@ -1,9 +1,19 @@
 """
-Python program to get scrape info about trending repositories from https://econpy.pythonanywhere.com/ex/XXX.html
+Python program to scrape info about trending repositories from https://github.com/trending
+Scrape: auyhor, projectname, stars and url from the site
+Sort all on Stars
+Create a CSV file with the scraped data
+Import the data into Pandas
+And create a Bar-graph
 """
 
 from bs4 import BeautifulSoup
 import requests
+
+import csv
+
+import pandas as pd
+import matplotlib.pyplot as plt
 
 url = "https://github.com/trending"
 
@@ -37,5 +47,18 @@ for repo_element in repo_list.find_all("li", {"class": "col-12 d-block width-ful
 
 repo_trends = sorted(repo_trends, key=lambda x: x[2], reverse=True)
 
-for elem in repo_trends:
-    print(elem)
+#for elem in repo_trends:
+#    print(elem)
+
+# Save list to CSV file
+with open("trends.csv","w") as csv_file:
+    wr = csv.writer(csv_file)
+    wr.writerows(repo_trends)
+
+df = pd.read_csv("trends.csv", names=["Author", "Name", "Stars", "Link"])
+
+df.set_index("Author", inplace=True)
+print(df)
+
+p = df.Stars.plot(kind="bar")
+plt.show()
